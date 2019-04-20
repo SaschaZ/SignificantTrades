@@ -66,14 +66,6 @@ const DEFAULTS = {
 }
 
 /**
- *  SUBDOMAIN EXTRA
- * 	automaticaly map subdomain as a *pair* and replace it in options
- * 	eg: ethusd.aggr.trade will set the *pair* options to ethusd.
- */
-
-const subdomain = window.location.hostname.match(/^([\d\w]+)\..*\./i);
-
-/**
  *  QUERY STRING PARSER
  * 	every options should be settable from querystring using encoded json
  */
@@ -87,10 +79,6 @@ try {
 	.replace(/=/g,'":"') + '"}');
 } catch (error) {
 	QUERY_STRING = {};
-}
-
-if (subdomain && subdomain.length >= 2) {
-	QUERY_STRING.pair = subdomain[1].toUpperCase();
 }
 
 for (let name in QUERY_STRING) {
