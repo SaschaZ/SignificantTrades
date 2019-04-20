@@ -84,8 +84,14 @@ class Bitmex extends Exchange {
 	matchPairName(name) {
 		if (this.pairs.indexOf(name) !== -1) {
 			return name;
-		} else if ((name = name.replace('BTC', 'XBT')) && this.pairs.indexOf(name) !== -1) {
-			return name;
+		}
+		let nameXbt = name.replace('BTC', 'XBT')
+		if (this.pairs.indexOf(nameXbt) !== -1) {
+			return nameXbt;
+		}
+		let nameM19 = name.replace('BTC', 'M19')
+		if (this.pairs.indexOf(nameM19) !== -1) {
+			return nameM19;
 		}
 		
 		return false;	
